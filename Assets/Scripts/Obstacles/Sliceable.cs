@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sliceable : MonoBehaviour
+public class Sliceable : Obstacle
 {
     [SerializeField]
     private List<GameObject> m_slices;
@@ -12,6 +12,7 @@ public class Sliceable : MonoBehaviour
     public void Slice()
     {
         gameObject.SetActive(false);
+        m_signalBus.Fire(new OnObstacleDestroyedSignal(this));
         foreach (GameObject slice in m_slices)
         {
             slice.SetActive(true);

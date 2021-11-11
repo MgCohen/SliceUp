@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using System;
 
 public class FloatingTextManager
 {
@@ -17,13 +18,16 @@ public class FloatingTextManager
     [Inject]
     private void Init()
     {
-        Debug.Log(2);
         m_signalBus.Subscribe<OnObstacleDestroyedSignal>(OnTextRequest);
     }
 
     public void OnTextRequest(OnObstacleDestroyedSignal signal)
     {
-        Debug.Log(1);
+        if (!signal.Obstacle)
+        {
+            return;
+        }
+
         string points = signal.Obstacle.Points.ToString();
         Transform target = signal.Obstacle.transform;
 
@@ -41,6 +45,11 @@ public class FloatingTextManager
 
     private void UseText(FloatingText floatter)
     {
+        if (!floatter)
+        {
+            return;
+        }
+
         m_availableFloaters.Remove(floatter);
         m_usedFloaters.Add(floatter);
         floatter.gameObject.SetActive(true);
@@ -48,6 +57,11 @@ public class FloatingTextManager
 
     public void ExpireText(FloatingText floater)
     {
+        if (!floater)
+        {
+            return;
+        }
+
         m_usedFloaters.Remove(floater);
         m_availableFloaters.Add(floater);
         floater.gameObject.SetActive(false);

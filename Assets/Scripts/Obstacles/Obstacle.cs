@@ -10,12 +10,7 @@ public class Obstacle : MonoBehaviour
     private int m_points;
 
     [Inject]
-    private SignalBus m_signalBus;
-
-    private void OnDisable()
-    {
-        m_signalBus.Fire(new OnObstacleDestroyedSignal(this));
-    }
+    protected SignalBus m_signalBus;
 
 }
 

@@ -10,7 +10,7 @@ public class Controller : ITickable
 
     public void Tick()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Mouse0))
         {
             m_signalBus.Fire(new OnTapSignal());
         }
