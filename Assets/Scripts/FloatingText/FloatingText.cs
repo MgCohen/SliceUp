@@ -10,6 +10,7 @@ public class FloatingText : MonoBehaviour
     [Inject]
     private FloatingTextManager m_floatingTextManager;
 
+    [SerializeField]
     private TextMeshProUGUI m_text;
 
     [Inject]
