@@ -12,7 +12,7 @@ public class Sliceable : MonoBehaviour
     public void Slice()
     {
         gameObject.SetActive(false);
-        foreach(GameObject slice in m_slices)
+        foreach (GameObject slice in m_slices)
         {
             slice.SetActive(true);
             PopSlice(slice);
