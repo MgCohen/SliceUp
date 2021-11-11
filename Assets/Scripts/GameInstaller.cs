@@ -11,7 +11,7 @@ public class GameInstaller : MonoInstaller
         SignalBusInstaller.Install(Container);
 
         Container.BindInterfacesAndSelfTo<Controller>().AsSingle().NonLazy();
-        Container.Bind<FloatingTextManager>().AsSingle();
+        Container.Bind<FloatingTextManager>().AsSingle().NonLazy();
 
         Container.DeclareSignal<OnLockSignal>().OptionalSubscriber();
         Container.DeclareSignal<OnTapSignal>().OptionalSubscriber();

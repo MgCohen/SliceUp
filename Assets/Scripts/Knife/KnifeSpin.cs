@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class ForcedSpin : MonoBehaviour
+public class KnifeSpin : MonoBehaviour
 {
     [Inject]
     private SignalBus m_signalBus;
@@ -35,7 +35,13 @@ public class ForcedSpin : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!m_isFree || m_boosting)
+        if (!m_isFree)
+        {
+            m_rigidBody.angularVelocity = Vector3.zero;
+            return;
+        }
+
+        if (m_boosting)
         {
             return;
         }
@@ -78,6 +84,6 @@ public class ForcedSpin : MonoBehaviour
 
     private void SetRotation(OnLockSignal signal)
     {
-        m_isFree = signal.LockStatus;
+        m_isFree = !signal.LockStatus;
     }
 }

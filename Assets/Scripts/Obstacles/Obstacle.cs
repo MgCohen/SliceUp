@@ -16,5 +16,6 @@ public class Obstacle : MonoBehaviour
     {
         m_signalBus.Fire(new OnObstacleDestroyedSignal(this));
     }
+
 }
 

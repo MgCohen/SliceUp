@@ -16,7 +16,7 @@ public class FloatingText : MonoBehaviour
     [Inject]
     public void Init(string text, Transform target)
     {
-        m_text.text = text;
+        m_text.text = "+" + text;
         transform.localScale = Vector3.zero;
 
         Sequence sequence = DOTween.Sequence();
@@ -25,7 +25,7 @@ public class FloatingText : MonoBehaviour
                 .Append(transform.DOScale(0, 0.5f))
                 .AppendCallback(()=> m_floatingTextManager.ExpireText(this));
 
-        Vector3 position = Camera.main.WorldToScreenPoint(target.position);
+        Vector3 position = target.position;
         transform.position = position;
     }
 

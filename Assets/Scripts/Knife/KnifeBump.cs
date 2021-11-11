@@ -22,6 +22,7 @@ public class KnifeBump : MonoBehaviour
 
     private void Boost()
     {
+        m_rigidBody.isKinematic = false;
         Vector3 velocity = m_rigidBody.velocity;
         velocity.y = 0;
         m_rigidBody.velocity = velocity;

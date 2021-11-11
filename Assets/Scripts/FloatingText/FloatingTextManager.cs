@@ -17,11 +17,13 @@ public class FloatingTextManager
     [Inject]
     private void Init()
     {
+        Debug.Log(2);
         m_signalBus.Subscribe<OnObstacleDestroyedSignal>(OnTextRequest);
     }
 
     public void OnTextRequest(OnObstacleDestroyedSignal signal)
     {
+        Debug.Log(1);
         string points = signal.Obstacle.Points.ToString();
         Transform target = signal.Obstacle.transform;
 
